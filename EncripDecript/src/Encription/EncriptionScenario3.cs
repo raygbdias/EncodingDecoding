@@ -1,11 +1,11 @@
 ﻿using EncodingDecoding.src.DecodingScenario2;
-using System;
 using System.Text;
 
 namespace SensitiveMessageEncryption
 {
     public class SensitiveMessage
     {
+        #region[Encrypt]
         static string Encrypt(string message, string password)
         {
             byte[] messageBytes = Encoding.ASCII.GetBytes(message);
@@ -20,7 +20,9 @@ namespace SensitiveMessageEncryption
 
             return BitConverter.ToString(encryptedBytes).Replace("-", "");
         }
+        #endregion
 
+        #region[Decrypt]
         static string Decrypt(string encryptedHex, string password)
         {
             byte[] encryptedBytes = new byte[encryptedHex.Length / 2];
@@ -47,7 +49,9 @@ namespace SensitiveMessageEncryption
             }
             return Encoding.ASCII.GetString(decryptedBytes);
         }
+        #endregion
 
+        #region[Encription]
         public void Encription()
         {
             string password = "eWater2023";
@@ -66,5 +70,6 @@ namespace SensitiveMessageEncryption
                 Console.WriteLine("Decrypted: " + decryptedMessage);
             }
         }
+        #endregion
     }
 }

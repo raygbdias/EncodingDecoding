@@ -5,7 +5,7 @@ namespace EncodingDecoding.src.DecodingScenario2
     public class DecodingScenario2
     {
         #region[DecodeMessageBlock]
-        public void DecodeMessageBlock(byte[] block, Dictionary<string, string> dictByte) 
+        public void DecodeMessageBlock(byte[] block, Dictionary<string, string> dictByte)
         {
             string blockType = Encoding.ASCII.GetString(block, 0, 4);
             int dataLength = block[4];
@@ -69,6 +69,7 @@ namespace EncodingDecoding.src.DecodingScenario2
             DecodingData(input4Bytes);
         }
         #endregion
+
         #region[ConvertHexStringToByteArray]
         byte[] ConvertHexStringToByteArray(string hexString)
         {

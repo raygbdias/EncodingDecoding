@@ -5,7 +5,7 @@ namespace EncodingDecoding.src.DecodingScenario2
     public class DecodingScenario2
     {
         #region[DecodeMessageBlock]
-        void DecodeMessageBlock(byte[] block, Dictionary<string, string> dictByte) 
+        public void DecodeMessageBlock(byte[] block, Dictionary<string, string> dictByte) 
         {
             string blockType = Encoding.ASCII.GetString(block, 0, 4);
             int dataLength = block[4];
@@ -21,13 +21,14 @@ namespace EncodingDecoding.src.DecodingScenario2
 
             byte[] byteArray = block.Skip(dataLength + blockType.Length + 2).ToArray();
 
-            if(byteArray.Length == 0)
+            dictByte[blockType] = data;
+
+            Console.WriteLine($"{blockType} : {data}");
+
+            if (byteArray.Length == 0)
             {
                 return;
             }
-
-            dictByte[blockType] = data;
-
             DecodeMessageBlock(byteArray, dictByte);
         }
 
@@ -40,6 +41,7 @@ namespace EncodingDecoding.src.DecodingScenario2
             {
                 Dictionary<string, string> dictByte = new Dictionary<string, string>();
                 DecodeMessageBlock(messageBytes, dictByte);
+                Console.WriteLine("-----");
             }
             catch (Exception ex)
             {

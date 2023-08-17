@@ -59,7 +59,7 @@ public class EncodingScenario1
             if (!Array.Exists(knownBlockTypes, type => type == kvp.Key))
             {
                 Console.WriteLine($"Ignoring unknown block type: {kvp.Key}");
-                continue; // Move to the next block
+                return new byte[] { }; // Move to the next block
             }
 
             try
@@ -82,7 +82,7 @@ public class EncodingScenario1
     {
         var input1 = new Dictionary<string, string>
         {
-            { "snd", "ewater" },
+            { "sndr", "ewater" },
             { "rcvr", "foo-works" },
             { "sens", "heart-beat" },
             { "time", "2023-08-16T13:07" }

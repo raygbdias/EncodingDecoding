@@ -18,7 +18,7 @@ public class EncodingScenario1
         }
         catch (Exception ex)
         {
-            throw new Exception($"block header did not pass it's own sum: {ex}");
+            throw new Exception($"block header did not pass it's own sum: {ex.Message}");
         }
     }
     #endregion
@@ -43,7 +43,7 @@ public class EncodingScenario1
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error Encoding the message Block:{ex}");
+            throw new Exception($"Error Encoding the message Block:{ex.Message}");
         }
     }
     #endregion
@@ -69,7 +69,7 @@ public class EncodingScenario1
             }
             catch (Exception ex)
             {
-                throw new Exception($"Block header error: {ex.Message}", ex);
+                throw new Exception($"Block header error: {ex.Message}");
             }
         }
 

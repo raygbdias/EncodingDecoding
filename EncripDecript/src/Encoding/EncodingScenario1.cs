@@ -1,11 +1,10 @@
 ﻿using System.Text;
 namespace EncodingDecoding.src.EncodingScenario1;
 
-
 public class EncodingScenario1
 {
     #region[CalculateChecksum]
-    static byte CalculateChecksum(byte[] data)
+    public static byte CalculateChecksum(byte[] data)
     {
         try
         {
@@ -49,7 +48,7 @@ public class EncodingScenario1
     #endregion
 
     #region[EncodeMessage]
-    static byte[] EncodeMessage(Dictionary<string, string> data)
+    public static byte[] EncodeMessage(Dictionary<string, string> data)
     {
         List<byte> message = new List<byte>();
         string[] knownBlockTypes = { "sndr", "rcvr", "kind", "sens", "data", "time" };

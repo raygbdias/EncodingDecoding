@@ -1,6 +1,3 @@
-﻿using EncripDecript.src.Encription;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EncodingDecoding.src.EncodingScenario1;
 
-Encription.EncriptionData();
+EncodingScenario1.EncodingData();

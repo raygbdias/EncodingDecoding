@@ -1,8 +1,8 @@
 ﻿using System.Text;
+namespace EncodingDecoding.src.EncodingScenario1;
 
-namespace EncripDecript.src.Encription;
 
-public class Encription
+public class EncodingScenario1
 {
     #region[CalculateChecksum]
     static byte CalculateChecksum(byte[] data)
@@ -56,29 +56,29 @@ public class Encription
 
         foreach (KeyValuePair<string, string> kvp in data)
         {
+            if (!Array.Exists(knownBlockTypes, type => type == kvp.Key))
+            {
+                Console.WriteLine($"Ignoring unknown block type: {kvp.Key}");
+                continue; // Move to the next block
+            }
+
             try
             {
-                //Here is checking if the key exists in the knownBlockTypes, I need to find a way to check if does not exists it won't check
-                //the others so it saves memory
-                if (Array.Exists(knownBlockTypes, type => type == kvp.Key))
-                {
-                    byte[] messageBlock = EncodeMessageBlock(kvp.Key, kvp.Value);
-                    message.AddRange(messageBlock);
-                }
+                byte[] messageBlock = EncodeMessageBlock(kvp.Key, kvp.Value);
+                message.AddRange(messageBlock);
             }
             catch (Exception ex)
             {
-                throw new Exception($"Block Header is Unkown {ex}");
+                throw new Exception($"Block header error: {ex.Message}", ex);
             }
-
         }
 
         return message.ToArray();
     }
     #endregion
 
-    #region[EncriptionData]
-    public static void EncriptionData()
+    #region[EncodingData]
+    public static void EncodingData()
     {
         var input1 = new Dictionary<string, string>
         {

@@ -20,7 +20,7 @@ namespace EncodingDecoding.Tests
 
             string password = "eWater2023";
 
-            string expectedMessage = "sndr\u0006\r\newaterxdat!(hopefully this one isn't too hardrcvr\r\n\u001fchallenger";
+            string expectedMessage = "sndr\u0006\rewaterxdat!(hopefully this one isn't too hardrcvr\u000a\u001fchallenger";
             //Act
             string? messageDecrypt = sensitiveMessage.Decrypt(encryptedHex, password);
 

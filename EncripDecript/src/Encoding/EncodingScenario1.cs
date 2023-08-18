@@ -19,12 +19,12 @@ public class EncodingScenario1
             }
             else
             {
-                throw new Exception($"block header did not pass it's own sum");
+                throw new Exception();
             }
         }
         catch (Exception ex)
         {
-            throw new Exception($"block header did not pass it's own sum: {ex.Message}");
+            throw new Exception($"block header did not pass it's own sum: {ex}");
         }
     }
     #endregion
@@ -43,7 +43,10 @@ public class EncodingScenario1
             Buffer.BlockCopy(lengthByte, 0, headerChecker, header.Length, lengthByte.Length);
             byte checksum = CalculateChecksum(headerChecker);
             byte[] checkSumArray = new byte[] { checksum };
-
+            if (checksum != CalculateChecksum(headerChecker))
+            {
+                throw new Exception("Block header checksum failed");
+            }
             byte[] block = new byte[header.Length + lengthByte.Length + dataBytes.Length + 1];
             Buffer.BlockCopy(header, 0, block, 0, header.Length);
             Buffer.BlockCopy(lengthByte, 0, block, header.Length, lengthByte.Length);
@@ -55,7 +58,7 @@ public class EncodingScenario1
         catch (Exception ex)
         {
             Console.WriteLine($"Exception while encoding block: {ex.Message}");
-            return new byte[0];
+            throw;
         }
     }
     #endregion
@@ -64,17 +67,23 @@ public class EncodingScenario1
     public static byte[] EncodeMessage(Dictionary<string, string> data)
     {
         List<byte> message = new List<byte>();
+        bool discardBlocks = false;
 
         foreach (KeyValuePair<string, string> kvp in data)
         {
             try
             {
-                byte[] messageBlock = EncodeMessageBlock(kvp.Key, kvp.Value);
-                message.AddRange(messageBlock);
+                if (!discardBlocks)
+                {
+                    byte[] messageBlock = EncodeMessageBlock(kvp.Key, kvp.Value);
+                    message.AddRange(messageBlock);
+                }
             }
             catch (Exception ex)
             {
                 Console.Write($"Block header error: {ex.Message}");
+                message.Clear();
+                break;
             }
         }
 
@@ -89,7 +98,7 @@ public class EncodingScenario1
         {
             Dictionary<string, string> input1 = new Dictionary<string, string>
         {
-            { "snd", "ewater" },
+            { "sndr", "ewater" },
             { "rcvr", "foo-works" },
             { "sens", "heart-beat" },
             { "time", "2023-08-16T13:07" }

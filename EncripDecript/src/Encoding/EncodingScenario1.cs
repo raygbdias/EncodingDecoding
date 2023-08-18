@@ -23,7 +23,7 @@ public class EncodingScenario1
     #endregion
 
     #region[EncodeMessageBlock]
-    static byte[] EncodeMessageBlock(string blockType, string data)
+    public static byte[] EncodeMessageBlock(string blockType, string data)
     {
         try
         {

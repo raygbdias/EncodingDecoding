@@ -16,9 +16,14 @@ namespace EncodingDecoding.Tests
         [Test]
         public void CalculateChecksum_ShouldCheckTheSum()
         {
+            //Arrange
             byte expectedCheckSum = 11;
             byte[] data = new byte[] { 115, 110, 100, 114 };
+
+            //Act
             byte checksum = EncodingScenario1.CalculateChecksum(data);
+
+            //Assert
             Assert.That(checksum, Is.EqualTo(expectedCheckSum));
         }
 
@@ -50,8 +55,21 @@ namespace EncodingDecoding.Tests
                 TValue value = fixture.Create<TValue>();
                 dictionary[key] = value;
             }
-
             return dictionary;
+        }
+        [Test]
+        public void EncodeMessageBlock_ShouldEncodeABlockOfMessage()
+        {
+            //Arrange
+            string? blockType = "sndr";
+            string? Data = "eWater";
+            byte[] expectedMessageBlock = new byte[] { 115, 110, 100, 114, 6, 101, 87, 97, 116, 101, 114, 11};
+
+            //Act
+            byte[] encodeMessageBlock = EncodingScenario1.EncodeMessageBlock(blockType, Data);
+
+            //Assert
+            Assert.That(expectedMessageBlock, Is.EqualTo(encodeMessageBlock));
         }
     }
 }

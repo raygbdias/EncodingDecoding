@@ -10,7 +10,6 @@ namespace EncodingDecoding.src.DecodingScenario2
             string blockType = Encoding.ASCII.GetString(block, 0, 4);
             int dataLength = block[4];
             byte checksum = block[5];
-
             byte calculatedChecksum = (byte)(block[0] ^ block[1] ^ block[2] ^ block[3] ^ block[4]);
             if (calculatedChecksum != checksum)
             {

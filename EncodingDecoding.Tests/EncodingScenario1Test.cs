@@ -17,8 +17,8 @@ namespace EncodingDecoding.Tests
         public void CalculateChecksum_ShouldCheckTheSum()
         {
             //Arrange
-            byte expectedCheckSum = 11;
-            byte[] data = new byte[] { 115, 110, 100, 114 };
+            byte expectedCheckSum = 13;
+            byte[] data = new byte[] { 115, 110, 100, 114, 6};
 
             //Act
             byte checksum = EncodingScenario1.CalculateChecksum(data);
@@ -63,7 +63,7 @@ namespace EncodingDecoding.Tests
             //Arrange
             string? blockType = "sndr";
             string? Data = "eWater";
-            byte[] expectedMessageBlock = new byte[] { 115, 110, 100, 114, 6, 101, 87, 97, 116, 101, 114, 11};
+            byte[] expectedMessageBlock = new byte[] { 115, 110, 100, 114, 6, 13, 101, 87, 97, 116, 101, 114};
 
             //Act
             byte[] encodeMessageBlock = EncodingScenario1.EncodeMessageBlock(blockType, Data);

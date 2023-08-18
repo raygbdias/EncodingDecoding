@@ -36,7 +36,6 @@ namespace SensitiveMessageEncryption
             for (int i = 0; i < encryptedBytes.Length; i++)
             {
                 decryptedBytes[i] = (byte)(encryptedBytes[i] ^ passwordBytes[i % passwordBytes.Length]);
-                Console.Write($"{decryptedBytes[i]}, ");
                 passwordBytes[i % passwordBytes.Length] = (byte)((passwordBytes[i % passwordBytes.Length] + 1) % 256);
             }
             Dictionary<string, string> byteDict = new Dictionary<string, string>();

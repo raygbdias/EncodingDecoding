@@ -3,7 +3,7 @@ using EncodingDecoding.src.EncodingScenario1;
 
 namespace EncodingDecoding.Tests
 {
-    public class Tests
+    public class EncodingTests
     {
         EncodingScenario1 encodingScenario1;
 

@@ -71,7 +71,7 @@ namespace EncodingDecoding.src.DecodingScenario2
         #endregion
 
         #region[ConvertHexStringToByteArray]
-        byte[] ConvertHexStringToByteArray(string hexString)
+        public byte[] ConvertHexStringToByteArray(string hexString)
         {
             hexString = hexString.Replace("-", "");
             byte[] byteArray = new byte[hexString.Length / 2];

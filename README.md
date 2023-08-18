@@ -15,10 +15,10 @@ SimpleDataTool is a command-line utility that offers basic functionalities for e
 3. **Setup:** Open a terminal and navigate to the SimpleDataTool project directory.
 
 4. **Build the Project:** Run the following command to build the project:
-
+- dotnet build
 
 5. **Run the Application:** Execute the following command to start the SimpleDataTool:
-
+- dotnet run
 
 6. **Usage:** Upon running the application, follow the prompts to perform different operations:
 

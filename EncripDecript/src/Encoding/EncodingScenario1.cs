@@ -58,7 +58,7 @@ public class EncodingScenario1
             if (!Array.Exists(knownBlockTypes, type => type == kvp.Key))
             {
                 Console.WriteLine($"Ignoring unknown block type: {kvp.Key}");
-                return new byte[] { }; // Move to the next block
+                return new byte[] { };
             }
 
             try
@@ -79,7 +79,7 @@ public class EncodingScenario1
     #region[EncodingData]
     public static void EncodingData()
     {
-        var input1 = new Dictionary<string, string>
+        Dictionary<string, string> input1 = new Dictionary<string, string>
         {
             { "sndr", "ewater" },
             { "rcvr", "foo-works" },
@@ -87,7 +87,7 @@ public class EncodingScenario1
             { "time", "2023-08-16T13:07" }
         };
 
-        var input2 = new Dictionary<string, string>
+        Dictionary<string, string> input2 = new Dictionary<string, string>
         {
             { "sndr", "ewater" },
             { "rcvr", "foo-works" },
@@ -95,7 +95,7 @@ public class EncodingScenario1
             { "data", "15" }
         };
 
-        var input3 = new Dictionary<string, string>
+        Dictionary<string, string> input3 = new Dictionary<string, string>
         {
             { "sndr", "ewater" },
             { "rcvr", "foo-works" },

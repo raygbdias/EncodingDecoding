@@ -5,7 +5,7 @@ using SensitiveMessageEncryption;
 Console.WriteLine("Hey everyone\n");
 Console.WriteLine("If you would like to see the encoded message, type 1\n to see the decoded message, type 2\n To encrypt data type 3");
 
-var console = Console.ReadLine();
+string? console = Console.ReadLine();
 
 if (console == "1")
 {

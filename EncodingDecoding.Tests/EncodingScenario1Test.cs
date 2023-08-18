@@ -17,17 +17,17 @@ namespace EncodingDecoding.Tests
         public void CalculateChecksum_ShouldCheckTheSum()
         {
             byte expectedCheckSum = 11;
-            byte[] data = new byte[] { 115, 110, 100, 114};
+            byte[] data = new byte[] { 115, 110, 100, 114 };
             byte checksum = EncodingScenario1.CalculateChecksum(data);
             Assert.That(checksum, Is.EqualTo(expectedCheckSum));
         }
 
 
-        [TestCase( "sndr", "rcvr", "kind", "sens", "data", "time")]
+        [TestCase("sndr", "rcvr", "kind", "sens", "data", "time")]
         public void EncodeMessage_ShouldEncodeTheMessage(params string[] args)
         {
             //Arrange
-            var expectedFirstFourByte = new int[] {115, 110, 100, 114}; 
+            int[] expectedFirstFourByte = new int[] { 115, 110, 100, 114 };
             Dictionary<string, string> expectedDict = CreateDictionary<string, string>(args.ToList());
 
             //Act
@@ -42,10 +42,10 @@ namespace EncodingDecoding.Tests
         }
         private Dictionary<TKey, TValue> CreateDictionary<TKey, TValue>(IEnumerable<TKey> keys)
         {
-            var fixture = new Fixture();
-            var dictionary = new Dictionary<TKey, TValue>();
+            Fixture fixture = new Fixture();
+            Dictionary<TKey, TValue> dictionary = new Dictionary<TKey, TValue>();
 
-            foreach (var key in keys)
+            foreach (TKey key in keys)
             {
                 TValue value = fixture.Create<TValue>();
                 dictionary[key] = value;
@@ -53,5 +53,5 @@ namespace EncodingDecoding.Tests
 
             return dictionary;
         }
-    }   
+    }
 }

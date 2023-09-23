@@ -83,7 +83,7 @@ pub fn encoding_data() {
     let message_bytes2 = encode_message(&input2);
     println!("Input 2 Message Bytes: {:?}", message_bytes2);
 
-    // instead of panic, it just return an error
+    // instead of panic, it just returns an error
     let message_bytes3 = encode_message(&input3);
     println!("Input 3 Message Bytes: {:?}", message_bytes3);
 }
